@@ -3,19 +3,16 @@ module.exports = {
     {
       resolve: `gatsby-theme-saas`,
       options: {
-        fonts: {
-          primary: {
-            name: "Raleway",
-            variations: "300,400,700"
+        fonts: [
+          {
+            name: "Roboto",
+            variations: "300,700"
           },
-          secondary: {
+          {
             name: "source sans pro",
-            variations: "300,400,700"
+            variations: "300"
           }
-        },
-        test: {
-          primary: "some test"
-        }
+        ]
       }
     }
   ]
