@@ -1,16 +1,16 @@
 {
-  "name": "example",
+  "name": "site",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
+  "author": "Ovidiu G. <ovidiu@themelify.com>",
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop -o",
     "build": "gatsby build"
   },
   "dependencies": {
     "gatsby": "^2.13.39",
-    "gatsby-theme-minimal": "^1.0.0",
+    "gatsby-theme-saas": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
