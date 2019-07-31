@@ -107,6 +107,13 @@ exports.onCreateNode = (
 exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const { createPage } = actions;
 
+  // const basePath = themeOptions.basePath || defaultBasePath;
+
+  // createPage({
+  //   path: basePath,
+  //   component: require.resolve(`./src/templates/home.js`)
+  // });
+
   const result = await graphql(`
     query {
       allPage {

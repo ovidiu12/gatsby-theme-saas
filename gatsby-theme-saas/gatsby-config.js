@@ -11,16 +11,25 @@ const defaultFonts = {
   ]
 };
 
-module.exports = ({ pagesPath = `content/pages`, fonts = defaultFonts }) => {
+module.exports = ({
+  pagesPath = `content/pages`,
+  basePath = `/`,
+  fonts = defaultFonts,
+  mdx = true
+}) => {
   let formattedFonts = [];
 
   fonts.map(font => formattedFonts.push(`${font.name}\:${font.variations}`));
 
   return {
     siteMetadata: {
-      title: `Themelify Saas`,
-      description: `Speed up your development with a blazing fast Gatsby theme by Themelify.`,
-      author: `Ovidiu G. <ovidiu@themelify.com>`
+      siteTitle: `Themelify SaaS`,
+      siteUrl: `https://themelify.com`,
+      siteDescription: `A Gatsby theme built for SaaS.`,
+      author: `ovidiugr12@gmail.com`,
+      logo: `my-logo.png`,
+      basePath,
+      pagesPath
     },
     plugins: [
       {
@@ -31,6 +40,13 @@ module.exports = ({ pagesPath = `content/pages`, fonts = defaultFonts }) => {
         }
       },
       {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `images`,
+          path: `${__dirname}/src/images`
+        }
+      },
+      mdx && {
         resolve: `gatsby-plugin-mdx`,
         options: {
           gatsbyRemarkPlugins: [
