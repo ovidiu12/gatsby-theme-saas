@@ -13,6 +13,7 @@ const defaultFonts = {
 
 module.exports = ({
   pagesPath = `content/pages`,
+  homePath = `content/home`,
   basePath = `/`,
   fonts = defaultFonts,
   mdx = true
@@ -37,6 +38,13 @@ module.exports = ({
         options: {
           name: pagesPath,
           path: pagesPath
+        }
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: homePath,
+          path: homePath
         }
       },
       {

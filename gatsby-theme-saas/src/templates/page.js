@@ -6,7 +6,6 @@ import SEO from "../components/seo";
 
 const PageTemplate = props => {
   let page = props.data.page;
-  console.log(props);
   return (
     <>
       <Layout>

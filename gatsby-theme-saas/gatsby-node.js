@@ -1,20 +1,28 @@
 const path = require(`path`);
 const fs = require("fs");
+const mkdirp = require("mkdirp");
 const defaultPagesPath = `content/pages`;
+const defaultHomePath = `content/home`;
 const defaultBasePath = `/`;
 
 exports.onPreBootstrap = ({ reporter, store }, themeOptions) => {
   const { program } = store.getState();
 
   const pagesPath = themeOptions.pagesPath || defaultPagesPath;
+  const homePath = themeOptions.homePath || defaultHomePath;
 
   //create the pages directory if it doesn't exist
-  const dir = path.join(program.directory, pagesPath);
+  const dirs = [
+    path.join(program.directory, homePath),
+    path.join(program.directory, pagesPath)
+  ];
 
-  if (!fs.existsSync(dir)) {
-    reporter.info(`Creating the "${dir}" directory`);
-    mkdirp.sync(dir);
-  }
+  dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      reporter.info(`Creating the "${dir}" directory`);
+      mkdirp.sync(dir);
+    }
+  });
 };
 
 const mdxResolver = fieldName => async (source, args, context, info) => {
@@ -33,6 +41,35 @@ exports.sourceNodes = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   const typeDefs = [
+    schema.buildObjectType({
+      name: `Home`,
+      fields: {
+        slug: { type: `String!` },
+        title: { type: `String!` },
+        hero_title: { type: `String!` },
+        hero_description: { type: `String!` },
+        hero_btn: { type: `String!` },
+        hero_image: { type: `File!`, extensions: { fileByRelativePath: {} } },
+        excerpt: {
+          type: `String!`,
+          args: {
+            pruneLength: {
+              type: `Int`,
+              defaultValue: 160
+            }
+          },
+          resolve: mdxResolver(`excerpt`)
+        },
+        body: {
+          type: `String!`,
+          resolve: mdxResolver(`body`)
+        }
+      },
+      interfaces: [`Node`],
+      extensions: {
+        infer: false
+      }
+    }),
     schema.buildObjectType({
       name: `Page`,
       fields: {
@@ -71,6 +108,7 @@ exports.onCreateNode = (
   const { createNode, createParentChildLink } = actions;
 
   const pagesPath = themeOptions.pagesPath || defaultPagesPath;
+  const homePath = themeOptions.homePath || defaultHomePath;
 
   if (node.internal.type !== `Mdx`) {
     return;
@@ -78,6 +116,32 @@ exports.onCreateNode = (
 
   const fileNode = getNode(node.parent);
   const source = fileNode.sourceInstanceName;
+
+  // Check for "home" and create the "Home" type
+  if (node.internal.type === `Mdx` && source === homePath) {
+    const fieldData = {
+      title: node.frontmatter.title,
+      hero_title: node.frontmatter.hero_title,
+      hero_description: node.frontmatter.hero_description,
+      hero_btn: node.frontmatter.hero_btn,
+      hero_image: node.frontmatter.hero_image
+    };
+
+    createNode({
+      ...fieldData,
+      id: createNodeId(`${node.id} >>> Home`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `Home`,
+        contentDigest: createContentDigest(fieldData),
+        content: JSON.stringify(fieldData),
+        description: `Home`
+      }
+    });
+
+    createParentChildLink({ parent: fileNode, child: node });
+  }
 
   // Check for "pages" and create the "Page" type
   if (node.internal.type === `Mdx` && source === pagesPath) {
@@ -107,12 +171,12 @@ exports.onCreateNode = (
 exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const { createPage } = actions;
 
-  // const basePath = themeOptions.basePath || defaultBasePath;
+  const basePath = themeOptions.basePath || defaultBasePath;
 
-  // createPage({
-  //   path: basePath,
-  //   component: require.resolve(`./src/templates/home.js`)
-  // });
+  createPage({
+    path: basePath,
+    component: require.resolve(`./src/templates/home.js`)
+  });
 
   const result = await graphql(`
     query {
