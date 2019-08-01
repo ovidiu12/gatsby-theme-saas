@@ -2,6 +2,7 @@ const defaultFonts = {
   fonts: [
     {
       name: "Raleway",
+      primary: true,
       variations: "300"
     },
     {

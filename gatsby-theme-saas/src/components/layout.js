@@ -3,12 +3,9 @@ import ResetStyles from "./reset";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../theme";
 import SEO from "./seo";
-import Header from "./header/header";
-import { graphql } from "gatsby";
+import Header from "./header";
 
-const AppRoot = styled.div`
-  font-family: "Raleway", sans-serif;
-`;
+const AppRoot = styled.div``;
 
 const Layout = props => {
   return (

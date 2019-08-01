@@ -1,7 +1,14 @@
 const colors = {
   // Brand
-  primary: "#2962ff",
-  secondary: "#0039cb",
+  primary: "#0039cb",
+  darkPrimary: "#002175",
+  secondary: "#2962ff",
+
+  // Colors on dark background
+  textDark: "#ffffff",
+
+  // Colors on dark background
+  textLight: "#121833",
 
   // Navy
   bigStone: "#181f3d", // light Navy
@@ -14,6 +21,7 @@ const colors = {
   gray: "#67758e",
   darkGray: "#414141",
   lightGray: "#cec4da",
+  whiteGray: "#f8f8f8",
 
   pearlwinkle: "#c7cbe4", // light silver
   manataee: "#868ba6", // silver

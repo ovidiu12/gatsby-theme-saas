@@ -46,6 +46,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       fields: {
         slug: { type: `String!` },
         title: { type: `String!` },
+        logo: { type: `File!`, extensions: { fileByRelativePath: {} } },
         hero_title: { type: `String!` },
         hero_description: { type: `String!` },
         hero_btn: { type: `String!` },
@@ -122,6 +123,7 @@ exports.onCreateNode = (
     const fieldData = {
       title: node.frontmatter.title,
       slug: node.frontmatter.slug,
+      logo: node.frontmatter.logo,
       hero_title: node.frontmatter.hero_title,
       hero_description: node.frontmatter.hero_description,
       hero_btn: node.frontmatter.hero_btn,
@@ -173,10 +175,13 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const { createPage } = actions;
 
   const basePath = themeOptions.basePath || defaultBasePath;
-
+  const fonts = themeOptions.fonts !== undefined ? themeOptions.fonts : [];
   createPage({
     path: basePath,
-    component: require.resolve(`./src/templates/home.js`)
+    component: require.resolve(`./src/templates/home.js`),
+    context: {
+      fonts
+    }
   });
 
   const result = await graphql(`
@@ -197,7 +202,8 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         path: page.slug,
         component: require.resolve(`./src/templates/page.js`),
         context: {
-          slug: page.slug
+          slug: page.slug,
+          fonts
         }
       });
     });

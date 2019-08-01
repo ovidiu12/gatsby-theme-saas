@@ -6,10 +6,17 @@ import getNavigation from "../utils/get-navigation";
 import { Container } from "../grid";
 import Logo from "./logo";
 import Navigation from "./navigation";
+import Button from "../ui/button";
 
 const Root = styled.div`
-  background: white;
   padding: ${props => props.theme.utils.em("20px")};
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${props => props.theme.colors.gray};
+  font-weight: bold;
 `;
 
 const ContentWrapper = styled.div`
@@ -18,11 +25,19 @@ const ContentWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledBtn = styled(Button)`
+  margin: 0;
+  padding: ${props => props.theme.utils.em("15px")};
+  padding-left: ${props => props.theme.utils.em("30px")};
+  padding-right: ${props => props.theme.utils.em("30px")};
+`;
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
+          siteTitle
           logo
         }
       }
@@ -36,9 +51,13 @@ const Header = () => {
       <Container>
         <ContentWrapper>
           <Link to="/">
-            <Logo image={logo.fluid} />
+            <LogoWrapper>
+              <Logo image={logo.fluid} />
+              {data.site.siteMetadata.siteTitle}
+            </LogoWrapper>
           </Link>
           <Navigation nav={nav} />
+          <StyledBtn primary>Get Started</StyledBtn>
         </ContentWrapper>
       </Container>
     </Root>

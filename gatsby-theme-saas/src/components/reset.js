@@ -20,7 +20,7 @@ export default createGlobalStyle`
     &:hover {
       color: ${theme.colors.comet};
     }
-
+    
   }
 
   a.u-txt-underline {
@@ -36,7 +36,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     color: ${theme.colors.mirage};
     font-size: ${theme.utils.em(theme.sizes.baseFontSize)};
-  
+    
   }
 
   body, p {
@@ -45,7 +45,7 @@ export default createGlobalStyle`
 
   p {
     margin-bottom: ${theme.utils.em(theme.sizes.lineHeight)};
-  
+    
     font-weight: 500 !important;
   }
 
@@ -61,7 +61,7 @@ export default createGlobalStyle`
     font-weight: 600;
     margin: 0;
     color: ${theme.colors.blackPearl};
-      
+        
   }
 
   ul, ol {
