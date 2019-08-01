@@ -4,6 +4,12 @@
   "main": "index.js",
   "author": "Ovidiu G. <ovidiu@themelify.com>",
   "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-theme",
+    "mdx",
+    "saas"
+  ],
   "peerDependencies": {
     "gatsby": "^2.6.0",
     "react": "^16.8.6",
