@@ -121,6 +121,7 @@ exports.onCreateNode = (
   if (node.internal.type === `Mdx` && source === homePath) {
     const fieldData = {
       title: node.frontmatter.title,
+      slug: node.frontmatter.slug,
       hero_title: node.frontmatter.hero_title,
       hero_description: node.frontmatter.hero_description,
       hero_btn: node.frontmatter.hero_btn,

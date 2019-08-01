@@ -1,11 +1,24 @@
 import React from "react";
-
-const Home = () => {
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+const Home = props => {
+  let page = props.data.allHome.nodes[0];
   return (
-    <div>
+    <Layout>
+      <SEO title={page.title} pathname={"/"} />
       <h1>Home Page</h1>
-    </div>
+    </Layout>
   );
 };
 
 export default Home;
+
+export const query = graphql`
+  query HomeQuery {
+    allHome {
+      nodes {
+        title
+      }
+    }
+  }
+`;

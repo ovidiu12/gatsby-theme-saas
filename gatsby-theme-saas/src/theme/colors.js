@@ -1,10 +1,7 @@
 const colors = {
   // Brand
-  primary: "#a767f3",
-  secondary: "#76c7f3",
-  darkBlue: "#2a4494",
-  midPurple: "#3d1479",
-  darkPurple: "#34143d",
+  primary: "#2962ff",
+  secondary: "#0039cb",
 
   // Navy
   bigStone: "#181f3d", // light Navy

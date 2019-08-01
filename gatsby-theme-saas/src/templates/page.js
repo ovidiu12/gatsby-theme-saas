@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const PageTemplate = props => {
+  console.log(props);
   let page = props.data.page;
   return (
     <>

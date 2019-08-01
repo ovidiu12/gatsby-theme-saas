@@ -5,8 +5,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            name: "Roboto",
-            variations: "300,700"
+            name: "Raleway",
+            variations: "300,500,700"
           },
           {
             name: "source sans pro",
