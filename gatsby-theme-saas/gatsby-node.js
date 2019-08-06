@@ -49,7 +49,8 @@ exports.sourceNodes = ({ actions, schema }) => {
         logo: { type: `File!`, extensions: { fileByRelativePath: {} } },
         hero_title: { type: `String!` },
         hero_description: { type: `String!` },
-        hero_btn: { type: `String!` },
+        primary_hero_btn: { type: `String!` },
+        secondary_hero_btn: { type: `String!` },
         hero_image: { type: `File!`, extensions: { fileByRelativePath: {} } },
         excerpt: {
           type: `String!`,
@@ -64,6 +65,9 @@ exports.sourceNodes = ({ actions, schema }) => {
         body: {
           type: `String!`,
           resolve: mdxResolver(`body`)
+        },
+        features: {
+          type: `[Node]!`
         }
       },
       interfaces: [`Node`],
@@ -126,7 +130,9 @@ exports.onCreateNode = (
       logo: node.frontmatter.logo,
       hero_title: node.frontmatter.hero_title,
       hero_description: node.frontmatter.hero_description,
-      hero_btn: node.frontmatter.hero_btn,
+      primary_hero_btn: node.frontmatter.primary_hero_btn,
+      secondary_hero_btn: node.frontmatter.secondary_hero_btn,
+      features: node.frontmatter.features,
       hero_image: node.frontmatter.hero_image
     };
 

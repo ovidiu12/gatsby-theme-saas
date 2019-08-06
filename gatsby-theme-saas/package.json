@@ -1,9 +1,13 @@
 {
   "name": "gatsby-theme-saas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Ovidiu G. <ovidiu@themelify.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovidiu12/gatsby-theme-saas"
+  },
   "keywords": [
     "gatsby",
     "gatsby-theme",

@@ -42,7 +42,13 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const Index = ({ heroTitle, heroDescription, heroBtn, heroImage }) => {
+const Index = ({
+  heroTitle,
+  heroDescription,
+  primaryHeroBtn,
+  secondaryHeroBtn,
+  heroImage
+}) => {
   return (
     <Root>
       <Container>
@@ -50,8 +56,8 @@ const Index = ({ heroTitle, heroDescription, heroBtn, heroImage }) => {
           <Heading>{heroTitle}</Heading>
           <Description>{heroDescription}</Description>
           <ButtonsWrapper>
-            <Button primary>{heroBtn}</Button>
-            <Button secondary>Contact us</Button>
+            <Button primary>{primaryHeroBtn}</Button>
+            <Button secondary>{secondaryHeroBtn}</Button>
           </ButtonsWrapper>
         </ContentWrapper>
         <ImageWrapper>

@@ -46,7 +46,6 @@ export default createGlobalStyle`
   p {
     margin-bottom: ${theme.utils.em(theme.sizes.lineHeight)};
     
-    font-weight: 500 !important;
   }
 
   img, embed, object, video {

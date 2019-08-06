@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import Hero from "../components/hero";
 
 const Root = styled.div`
@@ -24,9 +25,11 @@ const Home = props => {
         <Hero
           heroTitle={page.hero_title}
           heroDescription={page.hero_description}
-          heroBtn={page.hero_btn}
+          primaryHeroBtn={page.primary_hero_btn}
+          secondaryHeroBtn={page.secondary_hero_btn}
           heroImage={page.hero_image.childImageSharp.fluid}
         />
+        <MDXRenderer>{page.body}</MDXRenderer>
       </Layout>
     </Root>
   );
@@ -41,7 +44,8 @@ export const query = graphql`
         title
         hero_title
         hero_description
-        hero_btn
+        primary_hero_btn
+        secondary_hero_btn
         hero_image {
           childImageSharp {
             fluid(quality: 90) {
@@ -49,6 +53,7 @@ export const query = graphql`
             }
           }
         }
+        body
       }
     }
   }
