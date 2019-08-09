@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Hero from "../components/hero";
+import Features from "../components/features";
 
 const Root = styled.div`
   font-family: ${props =>
@@ -12,6 +13,7 @@ const Root = styled.div`
 
 const Home = props => {
   let page = props.data.allHome.nodes[0];
+  console.log(page);
   return (
     <Root
       font={
@@ -29,6 +31,7 @@ const Home = props => {
           secondaryHeroBtn={page.secondary_hero_btn}
           heroImage={page.hero_image.childImageSharp.fluid}
         />
+        <Features features={page.features} />
         <MDXRenderer>{page.body}</MDXRenderer>
       </Layout>
     </Root>
@@ -52,6 +55,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        features {
+          title
+          description
         }
         body
       }

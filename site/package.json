@@ -5,7 +5,7 @@
   "author": "Ovidiu G. <ovidiu@themelify.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "gatsby develop -o",
+    "dev": "gatsby develop",
     "build": "gatsby build"
   },
   "dependencies": {

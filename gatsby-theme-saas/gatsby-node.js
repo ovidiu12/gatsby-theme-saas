@@ -42,6 +42,14 @@ exports.sourceNodes = ({ actions, schema }) => {
 
   const typeDefs = [
     schema.buildObjectType({
+      name: "Feature",
+      fields: {
+        title: { type: `String!` },
+        description: { type: `String!` }
+      },
+      interfaces: [`Node`]
+    }),
+    schema.buildObjectType({
       name: `Home`,
       fields: {
         slug: { type: `String!` },
@@ -67,7 +75,7 @@ exports.sourceNodes = ({ actions, schema }) => {
           resolve: mdxResolver(`body`)
         },
         features: {
-          type: `[Node]!`
+          type: [`Feature`]
         }
       },
       interfaces: [`Node`],
