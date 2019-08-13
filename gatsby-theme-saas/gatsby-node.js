@@ -42,10 +42,21 @@ exports.sourceNodes = ({ actions, schema }) => {
 
   const typeDefs = [
     schema.buildObjectType({
+      name: "HowItWorksItem",
+      fields: {
+        title: { type: `String!` },
+        description: { type: `String!` },
+        image: { type: `File`, extensions: { fileByRelativePath: {} } }
+      },
+      interfaces: [`Node`]
+    }),
+    schema.buildObjectType({
       name: "Feature",
       fields: {
         title: { type: `String!` },
-        description: { type: `String!` }
+        description: { type: `String!` },
+        top_title: { type: `String` },
+        cta_button: { type: `String` }
       },
       interfaces: [`Node`]
     }),
@@ -76,6 +87,9 @@ exports.sourceNodes = ({ actions, schema }) => {
         },
         features: {
           type: [`Feature`]
+        },
+        how_it_works: {
+          type: [`HowItWorksItem`]
         }
       },
       interfaces: [`Node`],
@@ -141,6 +155,7 @@ exports.onCreateNode = (
       primary_hero_btn: node.frontmatter.primary_hero_btn,
       secondary_hero_btn: node.frontmatter.secondary_hero_btn,
       features: node.frontmatter.features,
+      how_it_works: node.frontmatter.how_it_works,
       hero_image: node.frontmatter.hero_image
     };
 

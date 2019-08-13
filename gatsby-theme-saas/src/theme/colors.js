@@ -1,8 +1,8 @@
 const colors = {
   // Brand
-  primary: "#0039cb",
+  primary: "#2962ff",
   darkPrimary: "#002175",
-  secondary: "#2962ff",
+  secondary: "#0039cb",
 
   // Colors on dark background
   textDark: "#ffffff",

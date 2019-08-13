@@ -4,21 +4,25 @@ import FeaturedItem from "./featured-item";
 import { Container } from "../grid";
 
 const Root = styled.div`
-  margin-top: ${props => props.theme.utils.em("200px")};
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin-top: ${props => props.theme.utils.em("250px")};
+  display: flex;
+  flex-direction: column;
 `;
 
-const Features = ({ features }) => {
+const Features = props => {
   return (
     <Container>
       <Root>
-        {features.map(feature => (
-          <FeaturedItem
-            title={feature.title}
-            description={feature.description}
-          />
-        ))}
+        {props.features !== undefined && props.features !== null
+          ? props.features.map(feature => (
+              <FeaturedItem
+                topTitle={feature.top_title}
+                title={feature.title}
+                description={feature.description}
+                ctaButton={feature.cta_button}
+              />
+            ))
+          : props.children}
       </Root>
     </Container>
   );

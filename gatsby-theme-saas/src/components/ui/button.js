@@ -11,7 +11,7 @@ const Root = styled.button`
   border-radius: 3px;
   margin: 0 auto;
   background: ${props =>
-    props.primary ? props.theme.colors.primary : "white"};
+    props.primary ? props.theme.colors.secondary : "white"};
   color: ${props => (props.primary ? "white" : props.theme.colors.primary)};
   cursor: pointer;
   box-shadow: none;

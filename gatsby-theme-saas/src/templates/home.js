@@ -13,7 +13,6 @@ const Root = styled.div`
 
 const Home = props => {
   let page = props.data.allHome.nodes[0];
-  console.log(page);
   return (
     <Root
       font={
@@ -32,7 +31,6 @@ const Home = props => {
           heroImage={page.hero_image.childImageSharp.fluid}
         />
         <Features features={page.features} />
-        <MDXRenderer>{page.body}</MDXRenderer>
       </Layout>
     </Root>
   );
@@ -59,6 +57,8 @@ export const query = graphql`
         features {
           title
           description
+          top_title
+          cta_button
         }
         body
       }

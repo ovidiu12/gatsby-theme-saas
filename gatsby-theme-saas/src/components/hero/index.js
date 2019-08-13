@@ -6,13 +6,18 @@ import Button from "../ui/button";
 
 const Root = styled.div`
   height: ${props => props.theme.utils.em("650px")};
-  background: white;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(2, 2, 2, 0) 1%,
+    rgba(249, 249, 249, 0.65) 100%
+  );
   padding-top: ${props => props.theme.utils.em("130px")};
   position: relative;
 `;
 
 const Heading = styled.h1`
-  color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   font-weight: 800;
   margin-bottom: 12px;
 `;
@@ -27,6 +32,7 @@ const ContentWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  margin-bottom: ${props => props.theme.utils.em("50px")};
 `;
 
 const ImageWrapper = styled.div`

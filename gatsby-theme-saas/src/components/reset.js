@@ -45,7 +45,6 @@ export default createGlobalStyle`
 
   p {
     margin-bottom: ${theme.utils.em(theme.sizes.lineHeight)};
-    
   }
 
   img, embed, object, video {
@@ -60,7 +59,6 @@ export default createGlobalStyle`
     font-weight: 600;
     margin: 0;
     color: ${theme.colors.blackPearl};
-        
   }
 
   ul, ol {
