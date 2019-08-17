@@ -21,17 +21,7 @@ const colors = {
   gray: "#67758e",
   darkGray: "#414141",
   lightGray: "#cec4da",
-  whiteGray: "#f8f8f8",
-
-  pearlwinkle: "#c7cbe4", // light silver
-  manataee: "#868ba6", // silver
-  comet: "#565B77", // dark silver
-
-  // UI
-  notification: "#1FB6FF",
-  positive: "#13CE66",
-  negative: "#FF4949",
-  warning: "#FFC82C"
+  whiteGray: "#f8f8f8"
 };
 
 export default colors;

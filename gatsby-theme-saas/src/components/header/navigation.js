@@ -9,9 +9,13 @@ const Root = styled.div`
   align-items: center;
 `;
 const StyledLink = styled(Link)`
-  color: ${props => props.theme.colors.gray};
+  color: white;
   font-size: ${props => props.theme.utils.em("15px")};
   font-weight: 700;
+  transition: all 0.2s ease-in;
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 `;
 
 const Navigation = ({ nav }) => {

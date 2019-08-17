@@ -42,21 +42,22 @@ exports.sourceNodes = ({ actions, schema }) => {
 
   const typeDefs = [
     schema.buildObjectType({
-      name: "HowItWorksItem",
-      fields: {
-        title: { type: `String!` },
-        description: { type: `String!` },
-        image: { type: `File`, extensions: { fileByRelativePath: {} } }
-      },
-      interfaces: [`Node`]
-    }),
-    schema.buildObjectType({
       name: "Feature",
       fields: {
         title: { type: `String!` },
         description: { type: `String!` },
         top_title: { type: `String` },
-        cta_button: { type: `String` }
+        cta_button: { type: `String` },
+        icon: { type: `File`, extensions: { fileByRelativePath: {} } }
+      },
+      interfaces: [`Node`]
+    }),
+    schema.buildObjectType({
+      name: "HowItWorksItem",
+      fields: {
+        title: { type: `String!` },
+        description: { type: `String!` },
+        image: { type: `File`, extensions: { fileByRelativePath: {} } }
       },
       interfaces: [`Node`]
     }),
@@ -71,6 +72,12 @@ exports.sourceNodes = ({ actions, schema }) => {
         primary_hero_btn: { type: `String!` },
         secondary_hero_btn: { type: `String!` },
         hero_image: { type: `File!`, extensions: { fileByRelativePath: {} } },
+        features: {
+          type: [`Feature`]
+        },
+        how_it_works: {
+          type: [`HowItWorksItem`]
+        },
         excerpt: {
           type: `String!`,
           args: {
@@ -84,12 +91,6 @@ exports.sourceNodes = ({ actions, schema }) => {
         body: {
           type: `String!`,
           resolve: mdxResolver(`body`)
-        },
-        features: {
-          type: [`Feature`]
-        },
-        how_it_works: {
-          type: [`HowItWorksItem`]
         }
       },
       interfaces: [`Node`],

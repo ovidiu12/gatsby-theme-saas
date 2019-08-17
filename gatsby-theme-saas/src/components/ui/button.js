@@ -10,16 +10,13 @@ const Root = styled.button`
   text-transform: uppercase;
   border-radius: 3px;
   margin: 0 auto;
+  outline: 0;
   background: ${props =>
     props.primary ? props.theme.colors.secondary : "white"};
   color: ${props => (props.primary ? "white" : props.theme.colors.primary)};
   cursor: pointer;
   box-shadow: none;
-  border: ${props =>
-    props.secondary
-      ? `1px solid ${props => props.theme.colors.lightGray}`
-      : "none"};
-  border-color: ${props => props.theme.colors.lightGray};
+  border: none;
   transition: background-color 0.15s ease-in;
   &:active,
   &:focus {

@@ -5,6 +5,7 @@ import SEO from "../components/seo";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Hero from "../components/hero";
 import Features from "../components/features";
+import HowItWorks from "../components/how-it-works";
 
 const Root = styled.div`
   font-family: ${props =>
@@ -31,6 +32,8 @@ const Home = props => {
           heroImage={page.hero_image.childImageSharp.fluid}
         />
         <Features features={page.features} />
+        <HowItWorks items={page.how_it_works} />
+        <MDXRenderer>{page.body}</MDXRenderer>
       </Layout>
     </Root>
   );
@@ -55,10 +58,28 @@ export const query = graphql`
           }
         }
         features {
+          icon {
+            childImageSharp {
+              fluid(quality: 90) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           title
           description
           top_title
           cta_button
+        }
+        how_it_works {
+          image {
+            childImageSharp {
+              fluid(quality: 90) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          title
+          description
         }
         body
       }

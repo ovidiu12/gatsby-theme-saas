@@ -6,18 +6,33 @@ import Button from "../ui/button";
 
 const Root = styled.div`
   height: ${props => props.theme.utils.em("650px")};
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(2, 2, 2, 0) 1%,
-    rgba(249, 249, 249, 0.65) 100%
-  );
+  background: ${props => props.theme.colors.secondary};
   padding-top: ${props => props.theme.utils.em("130px")};
   position: relative;
+
+  &:before {
+    content: "";
+    width: 700px;
+    height: 700px;
+    border-radius: 700px;
+    background: rgba(255, 255, 255, 0.03);
+    position: absolute;
+    bottom: -300px;
+  }
+  &:after {
+    content: "";
+    width: 700px;
+    height: 700px;
+    border-radius: 700px;
+    background: rgba(255, 255, 255, 0.03);
+    position: absolute;
+    top: -300px;
+    right: 0;
+  }
 `;
 
 const Heading = styled.h1`
-  color: ${props => props.theme.colors.primary};
+  color: #fff;
   font-weight: 800;
   margin-bottom: 12px;
 `;
@@ -62,8 +77,14 @@ const Index = ({
           <Heading>{heroTitle}</Heading>
           <Description>{heroDescription}</Description>
           <ButtonsWrapper>
-            <Button primary>{primaryHeroBtn}</Button>
-            <Button secondary>{secondaryHeroBtn}</Button>
+            <Button secondary>{primaryHeroBtn}</Button>
+
+            <Button
+              style={{ background: "rgba(255,255,255,0.2)", color: "white" }}
+              secondary
+            >
+              {secondaryHeroBtn}
+            </Button>
           </ButtonsWrapper>
         </ContentWrapper>
         <ImageWrapper>

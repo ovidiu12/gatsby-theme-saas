@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../ui/button";
+import Img from "gatsby-image";
 
+const IconWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  margin-bottom: ${props => props.theme.utils.em("10px")};
+`;
 const Root = styled.div`
-  margin-bottom: ${props => props.theme.utils.em("90px")};
-  max-width: 50%;
-  align-items: center;
-  &:nth-of-type(2n) {
-    align-self: flex-end;
-    text-align: right;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 const ContentWrapper = styled.div``;
 const TopTitle = styled.p`
@@ -26,7 +28,6 @@ const Title = styled.h3`
 `;
 const Description = styled.p`
   color: ${props => props.theme.colors.gray};
-  font-size: ${props => props.theme.utils.em("17px")};
   margin-bottom: 0;
 `;
 const CtaButton = styled(Button)`
@@ -36,6 +37,11 @@ const CtaButton = styled(Button)`
 const FeaturedItem = props => {
   return (
     <Root>
+      {props.icon !== null && (
+        <IconWrapper>
+          <Img fluid={props.icon} />
+        </IconWrapper>
+      )}
       <ContentWrapper>
         <TopTitle>{props.topTitle}</TopTitle>
         <Title>{props.title}</Title>

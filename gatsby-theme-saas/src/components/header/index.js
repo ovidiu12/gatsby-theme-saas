@@ -10,12 +10,13 @@ import Button from "../ui/button";
 
 const Root = styled.div`
   padding: ${props => props.theme.utils.em("20px")};
+  background: ${props => props.theme.colors.secondary};
 `;
 
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  color: ${props => props.theme.colors.gray};
+  color: white;
   font-weight: bold;
 `;
 
@@ -57,7 +58,7 @@ const Header = () => {
             </LogoWrapper>
           </Link>
           <Navigation nav={nav} />
-          <StyledBtn primary>Get Started</StyledBtn>
+          <StyledBtn secondary>Get Started</StyledBtn>
         </ContentWrapper>
       </Container>
     </Root>
