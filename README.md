@@ -1,15 +1,14 @@
 # A Gatsby theme for SaaS sites
-## !! WORK IN PROGRESS !!
 A SaaS template with support for MDX pages, and more. More themes coming soon on https://themelify.com/.
 
-[**Demo**](COMING SOON)
-
+[**Demo**](https://saas.themelify.com/) | 
+[Source Code](https://github.com/ovidiu12/gatsby-theme-saas) |
+[Example](https://github.com/ovidiu12/gatsby-theme-saas/tree/master/site)
 
 ## Main Features
 
 - MDX support
-- Styling through styled components
-- Theming based on styled components theming
+- Styling and theming through styled components
 
 ## Install
 
@@ -29,7 +28,7 @@ yarn add gatsby-theme-saas
 | `mdx`          | `true`             | Configure `gatsby-plugin-mdx` (if your website already is using the plugin pass `false` to turn this off) |
 
 #### Configuration
-You can customize the theme throguh the `siteMetadata` object that you can pass in `gatsby-config.js`
+You can configure the theme through the `siteMetadata` object that you can pass in `gatsby-config.js`
 
 ```js
 // gatsby-config.js
@@ -48,6 +47,27 @@ module.exports = {
 };
 ```
 
+#### Customization
+You can customize the theme through Gatsby's concept known as [Component Shadowing](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/). Basically you can overwrite any of the theme's components. 
+Let's say you want to edit the colors used in the website:
+
+```
+//Folder structure
+
+my-site
+└── src
+    ├── gatsby-theme-saas
+       ├── theme
+         └── colors.js
+         
+After you created the folder structure, inside colors.js simply
+
+export default colors = {
+  primary: 'red',
+  secondary: 'blue'
+}
+```
+
 ### Formats
 
 Home content needs the following frontmatter:
@@ -57,10 +77,28 @@ Home content needs the following frontmatter:
 title: "Home"
 slug: "/"
 logo: "./logo.png"
-hero_title: "Blazing fast development"
-hero_description: "Build a blazing fast site in no time using our SaaS theme."
-hero_btn: "Get Started"
-hero_image: "./hero-illustration.png"
+hero: {
+  hero_title: "Blazing fast development",
+  hero_description: "Don't waste time setting up. Use our Gatsby theme and speed up your development.",
+  primary_hero_btn: "Get Started",
+  secondary_hero_btn: "Contact Us",
+  hero_image: "./hero.png"
+}
+features: [
+  { top_title: "Easy setup", title: "MDX Powered", description: "Change the content of the website using only a mdx file or add your custom components", icon: "./gear-icon.png"}
+]
+how_it_works: [
+  {
+    title: "Install the theme",
+    description: "Install the theme either by downloading it directly from the website or through npm.",
+    image: "./npm-illustration.png"
+  }
+]
+call_to_action: {
+  title: "Still not sure how it works?",
+  cta_button1: "Read docs",
+  cta_button2: "Contact Us"
+}
 ---
 ```
 
