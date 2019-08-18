@@ -6,9 +6,16 @@ const ImgWrapper = styled.div`
   padding: 0 ${props => props.theme.utils.em("50px")};
   max-width: 70%;
   width: 100%;
+
+  ${props => props.theme.mq({ until: "md" })`
+    max-width: 100%;
+  `};
 `;
 const ContentWrapper = styled.div`
   max-width: 40%;
+  ${props => props.theme.mq({ until: "md" })`
+    max-width: 100%;
+  `};
 `;
 const Root = styled.div`
   display: flex;
@@ -18,6 +25,18 @@ const Root = styled.div`
       order: 2;
     }
   }
+  ${props => props.theme.mq({ until: "md" })`
+    flex-direction: column;
+    &:nth-of-type(2n) {
+      ${ImgWrapper} {
+        order: 1;
+      }
+      ${ContentWrapper}{
+        order: 2;
+      }
+    }
+    margin-bottom: ${props => props.theme.utils.em("50px")};
+  `};
 `;
 const Title = styled.h2`
   color: ${props => props.theme.colors.primary};

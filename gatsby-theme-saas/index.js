@@ -7,4 +7,4 @@ export {
 export { default as HowItWorks } from "./src/components/how-it-works";
 export {
   default as HowItWorksItem
-} from "./src/components/how-it-works/hiw-item";
+} from "./src/components/how-it-works/how-it-works-item";

@@ -24,6 +24,7 @@ const Root = styled.button`
     border-color: ${props => props.theme.colors.lightGray};
   }
   &:hover {
+    cursor: pointer;
     background-color: ${props =>
       props.primary
         ? props.theme.colors.darkPrimary

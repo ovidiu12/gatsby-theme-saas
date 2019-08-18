@@ -6,11 +6,11 @@ import getNavigation from "../utils/get-navigation";
 import { Container } from "../grid";
 import Logo from "./logo";
 import Navigation from "./navigation";
-import Button from "../ui/button";
 
 const Root = styled.div`
   padding: ${props => props.theme.utils.em("20px")};
   background: ${props => props.theme.colors.secondary};
+  position: relative;
 `;
 
 const LogoWrapper = styled.div`
@@ -26,14 +26,29 @@ const ContentWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledBtn = styled(Button)`
-  margin: 0;
-  padding: ${props => props.theme.utils.em("15px")};
-  padding-left: ${props => props.theme.utils.em("30px")};
-  padding-right: ${props => props.theme.utils.em("30px")};
+const BurgerButton = styled.button`
+  color: white;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  outline: 0;
+  margin-left: auto;
+  z-index: 1000;
+  ${props => props.theme.mq({ from: "sm" })`
+  display: none;
+`}
 `;
 
-const Header = () => {
+const DesktopMenu = styled.div`
+  margin-left: auto;
+  z-index: 1000;
+  ${props => props.theme.mq({ until: "sm" })`
+    display: none;
+  `}
+`;
+
+const Header = props => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -57,8 +72,12 @@ const Header = () => {
               {data.site.siteMetadata.siteTitle}
             </LogoWrapper>
           </Link>
-          <Navigation nav={nav} />
-          <StyledBtn secondary>Get Started</StyledBtn>
+          <DesktopMenu>
+            <Navigation nav={nav} />
+          </DesktopMenu>
+          <BurgerButton onClick={() => props.setOpenMenu(!props.openMenu)}>
+            ☰
+          </BurgerButton>
         </ContentWrapper>
       </Container>
     </Root>

@@ -42,6 +42,17 @@ exports.sourceNodes = ({ actions, schema }) => {
 
   const typeDefs = [
     schema.buildObjectType({
+      name: "Hero",
+      fields: {
+        hero_title: { type: `String!` },
+        hero_description: { type: `String!` },
+        primary_hero_btn: { type: `String` },
+        secondary_hero_btn: { type: `String` },
+        hero_image: { type: `File`, extensions: { fileByRelativePath: {} } }
+      },
+      interfaces: [`Node`]
+    }),
+    schema.buildObjectType({
       name: "Feature",
       fields: {
         title: { type: `String!` },
@@ -62,21 +73,31 @@ exports.sourceNodes = ({ actions, schema }) => {
       interfaces: [`Node`]
     }),
     schema.buildObjectType({
+      name: "CallToAction",
+      fields: {
+        title: { type: `String!` },
+        cta_button1: { type: `String!` },
+        cta_button2: { type: `String` }
+      },
+      interfaces: [`Node`]
+    }),
+    schema.buildObjectType({
       name: `Home`,
       fields: {
         slug: { type: `String!` },
         title: { type: `String!` },
         logo: { type: `File!`, extensions: { fileByRelativePath: {} } },
-        hero_title: { type: `String!` },
-        hero_description: { type: `String!` },
-        primary_hero_btn: { type: `String!` },
-        secondary_hero_btn: { type: `String!` },
-        hero_image: { type: `File!`, extensions: { fileByRelativePath: {} } },
+        hero: {
+          type: `Hero`
+        },
         features: {
           type: [`Feature`]
         },
         how_it_works: {
           type: [`HowItWorksItem`]
+        },
+        call_to_action: {
+          type: `CallToAction`
         },
         excerpt: {
           type: `String!`,
@@ -151,13 +172,11 @@ exports.onCreateNode = (
       title: node.frontmatter.title,
       slug: node.frontmatter.slug,
       logo: node.frontmatter.logo,
-      hero_title: node.frontmatter.hero_title,
-      hero_description: node.frontmatter.hero_description,
-      primary_hero_btn: node.frontmatter.primary_hero_btn,
-      secondary_hero_btn: node.frontmatter.secondary_hero_btn,
+      hero: node.frontmatter.hero,
       features: node.frontmatter.features,
       how_it_works: node.frontmatter.how_it_works,
-      hero_image: node.frontmatter.hero_image
+      hero_image: node.frontmatter.hero_image,
+      call_to_action: node.frontmatter.call_to_action
     };
 
     createNode({

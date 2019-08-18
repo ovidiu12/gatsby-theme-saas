@@ -40,6 +40,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-sharp": "^2.2.4",
     "mkdirp": "^0.5.1",
+    "react-burger-menu": "^2.6.11",
     "react-helmet": "^5.2.1",
     "styled-components": "^4.3.2",
     "styled-components-mq": "^0.0.7"
